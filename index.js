@@ -23,6 +23,18 @@ const server = http.createServer((req, res) => {
           firstItem: 'ごはん',
           secondItem: 'パン'
         }));
+      } else if (req.url === '/enquetes/sushi-pizza') {
+        res.write(jade.renderFile('./form.jade', {
+          path: req.url,
+          firstItem: '寿司',
+          secondItem: 'ピザ'
+        }));
+      } else {
+      	res.write('<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"></head><body><h1>' + 
+      	'アンケートページは以下のリンクから進めます。</h1>'  + 
+      	'<ul><li><a href="http://localhost:8000/enquetes/yaki-shabu">焼き肉 vs しゃぶしゃぶ</a></li>' + 
+      	'<li><a href="http://localhost:8000/enquetes/rice-bread">ごはん vs パン</a></li>' + 
+      	'<li><a href="http://localhost:8000/enquetes/sushi-pizza">寿司 vs ピザ</a></li></ul></body></html>');
       }
       res.end();
       break;
